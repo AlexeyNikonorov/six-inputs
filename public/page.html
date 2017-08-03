@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<style>
+.jumbotron {
+	background-color: rgb(45, 135, 170);
+	color: white;
+	padding-top: 8%;
+	padding-bottom: 8%;
+	padding-left: 10%;
+	padding-right: 10%;
+	border: 0;
+	border-radius: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+#navigation {
+	background-color: rgb(40, 40, 40);
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border: 0;
+	border-radius: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 16px;
+}
+.navbar-form {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.container {
+	margin-top: 50px;
+}
+.col-sm-12 {
+	padding-top: 50px;
+}
+a {
+	color: white;
+}
+a:hover {
+	color: rgb(80, 80, 80);
+}
+#form {
+	margin-top: 50px;
+}
+footer {
+	background-color: rgb(50, 50, 50);
+	color: rgb(220, 220, 220);
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 10%;
+	padding-right: 10%;
+	margin-top: 50px;
+}
+</style>
+</head>
+<body>
+<form class="navbar-form navbar-right" action="/author" method="post">
+	<div class="form-group">
+		<input class="form-control" name="login" type="text" placeholder="Login">
+	</div>
+	<div class="form-group">
+		<input class="form-control" name="password" type="password" placeholder="Password">
+	</div>
+	<button type="submit" class="btn btn-success">Submit</button>
+</form>
+<div class="jumbotron text-center">
+	<h1>Six Inputs</h1>
+	<p>In Our Time is Ernest Hemingway's first American collection of short stories, published in 1925 by Boni & Liveright. Its title is derived from "Give peace in our time, O Lord" from the English Book of Common Prayer.</p>
+</div>
+<ul id="navigation" class="nav nav-tabs nav-justified">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Menu 1</a></li>
+  <li><a href="#">Menu 2</a></li>
+  <li><a href="#">Menu 3</a></li>
+</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<h3>Column1</h3>
+			<p>Hemingway first used the title for a collection of six nonfiction vignettes of 75 to 187 words, commissioned by Ezra Pound for The Little Review. He added 12 more vignettes for in our time (with lower-case title), published in 1924 in Paris, about matadors, the Battle of Mons, the Greco-Turkish War and the execution of six Greek cabinet ministers.</p>
+		</div>
+		<div class="col-sm-4">
+			<h3>Column2</h3>
+			<p>Hemingway first used the title for a collection of six nonfiction vignettes of 75 to 187 words, commissioned by Ezra Pound for The Little Review. He added 12 more vignettes for in our time (with lower-case title), published in 1924 in Paris, about matadors, the Battle of Mons, the Greco-Turkish War and the execution of six Greek cabinet ministers.</p>
+			</p>
+		</div>
+		<div class="col-sm-4">
+			<h3>Column3</h3>
+			<p>Hemingway first used the title for a collection of six nonfiction vignettes of 75 to 187 words, commissioned by Ezra Pound for The Little Review. He added 12 more vignettes for in our time (with lower-case title), published in 1924 in Paris, about matadors, the Battle of Mons, the Greco-Turkish War and the execution of six Greek cabinet ministers.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<p>The 1925 New York collection combined these and fourteen newly written short stories, including "Indian Camp" and "Big Two-Hearted River", two of his best-known Nick Adams stories. He added "On the Quai at Smyrna" for the 1930 edition. The collection resonates with themes of alienation, loss, grief and separation, and includes descriptions of war, bullfighting and current events. It is the earliest Hemingway work to employ his iceberg theory of writing, in which the underlying meaning is hinted at, rather than explicitly stated.</p>
+		</div>
+	</div>
+	<div id="form" class="container">
+		<h2 align="center">Make Order</h2>
+		<div class="col-sm-4 col-sm-offset-4">
+			<form enctype="multipart/form-data" action="/" method="post">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input class="form-control" name="email" type="email">
+				</div>
+				<div class="form-group">
+					<label>Price</label>
+					<input class="form-control" name="price" type="text">
+				</div>
+				<div class="form-group">
+					<label>Deadline</label>
+					<input class="form-control" name="deadline" type="text">
+				</div>
+				<div class="form-group">
+					<label>Comments</label>
+					<textarea class="form-control" name="comments" rows="3"></textarea>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Attache files</label>
+					<input type="file" name="files" multiple>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<footer class="text-center">
+	<p>He added "On the Quai at Smyrna" for the 1930 edition. The collection resonates with themes of alienation, loss, grief and separation, and includes descriptions of war, bullfighting and current events. It is the earliest Hemingway work to employ his iceberg theory of writing.</p>
+</footer>
+</body>
+</html>

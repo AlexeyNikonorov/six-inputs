@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<script src="jquery-3.1.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script>
+function renderTable(orders) {
+	var html = ''
+	for (var i = 0; i < orders.length; i++) {
+		var order = orders[i]
+		html += '<tr id="' + order.id + '">\n'
+		html += '	<td class="email">' + order.email + '</td>\n'
+		html += '	<td class="price">' + order.price + '</td>\n'
+		html += '	<td class="deadline">' + order.deadline + '</td>\n'
+		html += '	<td class="status">' + order.status + '</td>\n'
+		html += '</tr>\n'
+	}
+	$("tbody").html(html);
+}
+function renderDetails(data) {
+	$("#details-email").text("Почта: " + data.email);
+	$("#details-posted").text("Принят: " + data.posted);
+	$("#details-status").text("Статус: " + data.status);
+	$("#details-price").text("Цена: " + data.price);
+	$("#details-deadline").text("Срок: " + data.deadline);
+	$("#details-comments").text("Комментарии: " + data.comments);
+	if (data.attachments) {
+		$("#details-attachments").html(
+			"Прикрепленные файлы: " + (data.attachments || "") +
+			" <a href=\"" + data.link + "\">скачать</a>");
+	} else {
+		$("#details-attachments").text("Прикрепленные файлы: Нет");
+	}
+	if (data.appliedBy.length) {
+		list = 'Выполняется: ' + data.appliedBy[0];
+		for (var i = 1; i < data.appliedBy.length; i++) {
+			list += ', ' + data.appliedBy[i];
+		}
+		$("#details-applied-by").text(list);
+	}
+}
+$(document).ready(function() {
+	$("#apply").click(function() {
+		var id = $("div.modal-body").attr("id");
+		$.post("/apply", {id: id}, function(data, status) {
+			if (data.status == "applied") {
+				renderDetails(data.order);
+			}
+		});
+	});
+	$("#upload").click(function() {
+		
+	});
+	$.get("/orders", function(data, status) {
+		renderTable(data);
+		$("tbody tr").click(function() {
+			var id = $(this).attr("id");
+			$.post("/details", {id: id}, function(data, status) {
+				$("div.modal-body").attr("id", id);
+				renderDetails(data);
+				$("#details").modal();
+			});
+		});
+	});
+});
+</script>
+</head>
+<body>
+<div class="modal" id="details">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header"><h3>Подробнее</h3></div>
+			<div class="modal-body">
+				<ul class="list-group">
+					<li id="details-email" class="list-group-item"></li>
+					<li id="details-posted" class="list-group-item"></li>
+					<li id="details-status" class="list-group-item"></li>
+					<li id="details-price" class="list-group-item"></li>
+					<li id="details-deadline" class="list-group-item"></li>
+					<li id="details-comments" class="list-group-item"></li>
+					<li id="details-attachments" class="list-group-item"></li>
+					<li id="details-applied-by" class="list-group-item"></li>
+				</ul>
+				<form enctype="multipart/form-data" action="/upload" method="post">
+					<div class="form-group">
+						<label class="control-label">Загрузить решение</label>
+						<input type="file" name="files" multiple>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">Отправить</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" id="apply">Принять</button>
+				<button class="btn btn-default" data-dismiss="modal">Закрыть</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="col-sm-offset-2 col-sm-8">
+		<h2>Заказы</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Электронная почта</th>
+					<th>Цена</th>
+					<th>Срок</th>
+					<th>Статус</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>

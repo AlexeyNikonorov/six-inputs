@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<script src="jquery-3.1.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<form class="navbar-form navbar-right" action="/author" method="post">
+			<div class="form-group">
+				<input class="form-control" name="login" type="text" placeholder="Логин">
+			</div>
+			<div class="form-group">
+				<input class="form-control" name="password" type="password" placeholder="Пароль">
+			</div>
+			<button type="submit" class="btn btn-default">Войти</button>
+		</form>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<h2 align="center">Оформить заказ</h2>
+			<p>Чтобы оформить заказ, укажите адресс электронной почты. По исполнении заказа, мы пришлем решение на этот адресс. Поля "Цена" и "Срок" не обязательны для заполнения.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-offset-4 col-sm-4">
+			<form enctype="multipart/form-data" action="/" method="post">
+				<div class="form-group">
+					<label for="email">Электронная почта</label>
+					<input class="form-control" name="email" type="email">
+				</div>
+				<div class="form-group">
+					<label>Цена</label>
+					<input class="form-control" name="price" type="text">
+				</div>
+				<div class="form-group">
+					<label>Срок</label>
+					<input class="form-control" name="deadline" type="text">
+				</div>
+				<div class="form-group">
+					<label>Комментарии</label>
+					<textarea class="form-control" name="comments" rows="3"></textarea>
+				</div>
+				<div class="form-group">
+					<label class="control-label">Прикрепить файлы</label>
+					<input type="file" name="files" multiple>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">Отправить</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
